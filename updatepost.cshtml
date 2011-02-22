@@ -1,0 +1,11 @@
+﻿@{
+    var db = Database.Open("Test"); 
+    
+    var text = Request["text"];
+    var id = Request["id"].AsInt();
+    //var footnote = Request["footnote"];
+    
+    db.Execute("update Notes set Text=@0 where id = @1", text , id);
+    
+    Json.Write(new {text = text, id = id}, Response.Output);
+}

@@ -1,0 +1,50 @@
+﻿ <!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>My Tumblelog</title>
+    <link rel="stylesheet" href="@Href("~/Styles/boilerplate.css")" type="text/css">
+     <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" >
+    document.createElement("nav" );
+    document.createElement("header" );
+    document.createElement("footer" );
+    document.createElement("section" );
+    document.createElement("aside" );
+    document.createElement("article" );
+    </script>
+<![endif]-->
+</head>
+<body>
+    <header id="page_header">
+        <h1>{Mayoa's Tumblelog}</h1>
+                 <div id="login">
+                    @if (WebSecurity.IsAuthenticated) {
+                        <p>
+                            Welcome <a href="@Href("~/Account/ChangePassword")" title="Change password">@WebSecurity.CurrentUserName</a>!
+                            <a href="@Href("~/Account/Logout")">Logout</a>
+                        </p>
+                    }  
+                </div>
+                 
+    </header>
+    <section id="page" class="wrapper">
+         @RenderBody()
+     </section>
+    <footer id="page_footer">        
+        <nav>           
+        </nav>
+    </footer>
+    <script type="text/javascript" src="@Href("scripts/jquery.js")" ></script>
+    <script type="text/javascript" src="@Href("scripts/jquery.timeago.js")" ></script> 
+    <script type="text/javascript" src="@Href("scripts/inline_edit.js")" ></script>
+    <script type="text/javascript" src="@Href("scripts/max_lenght.js")" ></script>
+    <script type="text/javascript" src="@Href("scripts/tumble_scripts.js")" ></script>
+    <script type="text/javascript" src="@Href("scripts/watermark.js")" ></script>
+    
+ </body>
+</html>
+

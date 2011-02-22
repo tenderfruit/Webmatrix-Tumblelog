@@ -1,0 +1,10 @@
+﻿@{  
+    var db = Database.Open("Test");
+    
+    var text = Request["text"];
+    var footnote = Request["footnote"];
+    db.Execute(@"insert into Notes(Text, Footnote, DateCreated) values (@0, @1, @2)", text, footnote, DateTime.Now);     
+    var id = db.GetLastInsertId();
+}
+@MyHelpers.Article(DateTime.Now , text, footnote, id)
+ 

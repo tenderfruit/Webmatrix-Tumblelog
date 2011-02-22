@@ -1,0 +1,21 @@
+﻿@{  Layout = "~/_Layout.cshtml";
+    var db = Database.Open("Test");
+    var  posts = db.Query("select * from Notes order by DateCreated desc");
+     
+}
+
+ <ul>
+    <li>
+        @if (WebSecurity.IsAuthenticated) {
+            @MyHelpers.EntryForm()
+        }
+    </li>
+    @foreach (var post in posts)
+    {
+        <li>
+            @MyHelpers.Article(post.DateCreated, post.Text, post.Footnote, post.Id)
+         </li>
+    }
+</ul>
+         
+ 

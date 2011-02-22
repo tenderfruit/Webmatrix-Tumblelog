@@ -1,0 +1,49 @@
+﻿
+@helper Article(dynamic dateTime,dynamic text,dynamic footnote, dynamic id){
+<article class="wrapper">
+    <input type="hidden" id="id" name="id" value="@id"/>
+    <aside>
+       @if (WebSecurity.IsAuthenticated) {
+
+        <a href="#" class="delete">remove</a>
+        
+        <br/>
+        }  
+        @MyHelpers.Microdate(dateTime)
+        
+        
+    </aside> 
+    <section> 
+        <div class="editable-area">
+            @text 
+        </div>
+        <footer>             
+            --@footnote
+        </footer> 
+    </section>
+</article>
+}
+
+@helper Microdate(dynamic dateTime){
+         
+        <abbr title="@dateTime.ToString("s")" class="small quiet timeago">
+            @dateTime.ToString("D")<br/>at @dateTime.ToString("t") 
+        </abbr>
+}
+@helper EntryForm(){
+<form method="post" id="myForm" action="" class="hform">
+    <fieldset>
+        <legend><a id="comment-toggler" href="#">Add a post</a></legend>
+        <div>
+            <p> 
+                <textarea rows="3" cols="40" type="text" name="text" id="text" class="maxlength watermark">type text</textarea>
+            </p>
+            <p>
+                <input type="text" name="footnote" id="footnote" value="footnote"  class=" watermark"/>
+            </p> 
+        <input type="submit" value="Save" class="button" id="save"> 
+        </div>
+    </fieldset>
+</form> 
+}
+ 

@@ -1,0 +1,4 @@
+﻿@{
+    var db = Database.Open("Test"); 
+    db.Execute("delete from Notes where id = @0",Request["id"].AsInt());
+}
